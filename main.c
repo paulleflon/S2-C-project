@@ -27,5 +27,7 @@ int main() {
 	printf("Select an option:\n");
 	char* options[] = {"Add a shape", "Display the list of shapes", "Delete a shape", "Draw shapes", "Help"};
 	int choice = menu(options, 5);
-	return 0;
+    return 0;
 }
+
+
