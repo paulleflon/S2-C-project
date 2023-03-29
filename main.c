@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <string.h>
+#include "headers/point.h"
+#include "headers/segment.h"
+#include "headers/square.h"
+
 
 int menu(char** options, int options_size) {
 	for (int i = 0; i < options_size; i++) {
