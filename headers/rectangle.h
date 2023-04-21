@@ -1,14 +1,16 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
+#include "Point.h"
 
-typedef struct rectangle{
-    int width;
+typedef struct {
+	Point *origin;
+	int width;	
     int height;
-}Rectangle;
+} Rectangle;
 
-Rectangle *create_rectangle(Point * point, int width, int height);
-void delete_rectangle(Rectangle * rectangle);
-void print_rectangle(Rectangle * rectangle);
+Rectangle* create_rectangle(Point *origin, int width, int height);
+void delete_rectangle(Rectangle *rectangle);
+void print_rectangle(Rectangle *rectangle);
 
 
 #endif

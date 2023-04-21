@@ -1,13 +1,14 @@
 #ifndef POLYGON_H
 #define POLYGON_H
+#include "Point.h"
 
-typedef struct polygon {
+typedef struct Polygon {
     int n;
-    Point ** points; // 1D dynamical array of Point*
-}Polygon;
+    Point **points;
+} Polygon;
 
-Polygon *create_polygon(int n);
-void delete_polygon(Polygon * polygon);
-void print_polygon(Polygon * polygon);
+Polygon *create_polygon(int coords[], int n);
+void delete_polygon(Polygon *polygon);
+void print_polygon(Polygon *polygon);
 
 #endif
