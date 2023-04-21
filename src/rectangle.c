@@ -16,5 +16,5 @@ void delete_rectangle(Rectangle *rectangle) {
 }
 
 void print_rectangle(Rectangle *rectangle) {
-	printf("RECTANGLE %d %d %d %d\n", rectangle->origin->pos_x, rectangle->origin->pos_y, rectangle->width, rectangle->height);
+	printf("RECTANGLE %d %d %d %d\n", rectangle->origin->x, rectangle->origin->y, rectangle->width, rectangle->height);
 }

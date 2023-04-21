@@ -10,12 +10,14 @@ Shape* create_empty_shape(SHAPE_TYPE type) {
 	shape->type = type;
 	return shape;
 }
+
 Shape* create_point_shape(int x, int y) {
 	Shape *shape = create_empty_shape(point);
 	Point *p = create_point(x, y);
 	shape->ptrShape = p;
 	return shape;
 }
+
 Shape* create_line_shape(int x1, int y1, int x2, int y2) {
 	Shape *shape = create_empty_shape(line);
 	Point *p1 = create_point(x1, y1);
@@ -24,6 +26,7 @@ Shape* create_line_shape(int x1, int y1, int x2, int y2) {
 	shape->ptrShape = l;
 	return shape;
 }
+
 Shape* create_square_shape(int x, int y, int length) {
 	Shape *shape = create_empty_shape(square);
 	Point *origin = create_point(x, y);
@@ -31,6 +34,7 @@ Shape* create_square_shape(int x, int y, int length) {
 	shape->ptrShape = s;
 	return shape;
 }
+
 Shape* create_rectangle_shape(int x, int y, int width, int height) {
 	Shape *shape = create_empty_shape(rectangle);
 	Point *origin = create_point(x, y);
@@ -45,6 +49,7 @@ Shape* create_circle_shape(int x, int y, int radius) {
 	shape->ptrShape = c;
 	return shape;
 }
+
 Shape* create_polygon_shape(int coords[], int n) {
 	Shape *shape = create_empty_shape(polygon);
 	Polygon *poly = create_polygon(coords, n);
@@ -74,6 +79,7 @@ void delete_shape(Shape *shape) {
 			break;
 	}
 }
+
 void print_shape(Shape *shape) {
 	printf("#%d: ", shape->id);
 	switch (shape->type) {

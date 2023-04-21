@@ -3,7 +3,6 @@
 #include "headers/Shape.h"
 #define string char*
 
-
 Shape **shapes;
 int shape_count = 0;
 
@@ -128,14 +127,12 @@ void display_shapes() {
 	printf("\n");
 }
 
-
 int main() {
 	int running = 1;
 	while (running) {
 		printf("Select an option:\n");
 		string options[] = {"Add a shape", "Display the list of shapes", "Delete a shape", "Draw shapes", "Help", "Exit"};
 		int choice = menu(options, 6);
-
 		switch (choice) {
 			case 0:
 				add_shape();
@@ -148,7 +145,7 @@ int main() {
 				break;
 			default:
 				printf("This feature is not implemented yet.\n");
-
+				break;
 		}
 	}
 	return 0;

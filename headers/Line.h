@@ -2,7 +2,7 @@
 #define LINE_H
 #include "Point.h"
 
-typedef struct Line{
+typedef struct Line {
     Point *p1;
     Point *p2;
 } Line;

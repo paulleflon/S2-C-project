@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "../headers/Square.h"
 
-
 Square* create_square(Point *point, int length) {
     Square *square = (Square*)malloc(sizeof(Square));
 	square->origin = point;
@@ -16,5 +15,5 @@ void delete_square(Square *square) {
 }
 
 void print_square(Square *square) {
-    printf("SQUARE %d %d %d\n", square->origin->pos_x, square->origin->pos_y, square->length);
+    printf("SQUARE %d %d %d\n", square->origin->x, square->origin->y, square->length);
 }

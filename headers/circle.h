@@ -7,8 +7,8 @@ typedef struct Circle {
     int radius;
 } Circle;
 
-Circle* create_circle(Point * center, int radius);
-void delete_circle(Circle * circle);
-void print_circle(Circle * circle);
+Circle* create_circle(Point *center, int radius);
+void delete_circle(Circle *circle);
+void print_circle(Circle *circle);
 
 #endif
