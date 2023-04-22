@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Square.h"
+#include "../../headers/Shapes/Square.h"
 
 Square* create_square(Point *point, int length) {
     Square *square = (Square*)malloc(sizeof(Square));

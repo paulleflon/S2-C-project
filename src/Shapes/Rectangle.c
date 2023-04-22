@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Rectangle.h"
+#include "../../headers/Shapes/Rectangle.h"
 
 Rectangle* create_rectangle(Point *origin, int width, int height) {
 	Rectangle* rectangle = (Rectangle*)malloc(sizeof(Rectangle));

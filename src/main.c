@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "headers/Shape.h"
+#include "../headers/Shapes/Shape.h"
+#include "../headers/List.h"
 #define string char*
 
-Shape **shapes;
-int shape_count = 0;
+List shapes;
 
 int menu(string options[], int options_size) {
 	for (int i = 0; i < options_size; i++) {
@@ -115,15 +115,16 @@ void add_shape() {
 			  shape = input_polygon();
 			  break;
 	}
-	shape_count++;
-	shapes = realloc(shapes, shape_count * sizeof(Shape));
-	shapes[shape_count-1] = shape;
+	append_shape(&shapes, shape);
 	printf("\n");
 }
 
 void display_shapes() {
-	for (int i = 0; i < shape_count; i++)
-		print_shape(shapes[i]);
+	Node *current = shapes;
+	while (current != NULL) {
+		print_shape(current->value);
+		current = current->next;
+	}
 	printf("\n");
 }
 

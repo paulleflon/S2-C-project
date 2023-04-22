@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Circle.h"
+#include "../../headers/Shapes/Circle.h"
 
 Circle* create_circle(Point *center, int radius) {
 	Circle *circle = (Circle*)malloc(sizeof(Circle));

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Polygon.h"
+#include "../../headers/Shapes/Polygon.h"
 
 Polygon* create_polygon(int coords[], int n) {
 	Polygon *poly = (Polygon*)malloc(sizeof(Polygon));

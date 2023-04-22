@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Point.h"
+#include "../../headers/Shapes/Point.h"
 
 Point* create_point(int x, int y) {
     Point *point = malloc(sizeof(Point));

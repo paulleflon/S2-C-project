@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Shape.h"
-#include "../headers/id.h"
+#include "../../headers/Shapes/Shape.h"
+#include "../../headers/id.h"
 
 Shape* create_empty_shape(SHAPE_TYPE type) {
 	Shape *shape = (Shape*)malloc(sizeof(Shape));

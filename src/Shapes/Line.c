@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../headers/Line.h"
+#include "../../headers/Shapes/Line.h"
 
 Line* create_line(Point *p1, Point *p2) {
     Line *line = (Line*)malloc(sizeof(Line));
