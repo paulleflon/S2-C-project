@@ -171,3 +171,35 @@ void pixel_polygon(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 		}
 	}
 }
+
+Pixel** create_shape_to_pixel(Shape *shape, int *nb_pixels) {
+	Pixel **tab;
+	switch(shape->type) {
+		case point:
+			pixel_point(shape, &tab, nb_pixels);
+			break;
+		case line:
+			pixel_line(shape, &tab, nb_pixels);
+			break;
+		case circle:
+			pixel_circle(shape, &tab, nb_pixels);
+			break;
+		case rectangle:
+			pixel_rectangle(shape, &tab, nb_pixels);
+			break;
+		case square:
+			pixel_square(shape, &tab, nb_pixels);
+			break;
+		case polygon:
+			pixel_polygon(shape, &tab, nb_pixels);
+			break;
+	}
+	return tab;
+}
+
+void delete_pixel_shape(Pixel ***pixel_tab, int nb_pixels) {
+	for (int i = 0; i < nb_pixels; i++) {
+		free((*pixel_tab)[i]);
+	}
+	free(pixel_tab);
+}
