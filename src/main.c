@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../headers/Shapes/Shape.h"
 #include "../headers/List.h"
+#include "../headers/Command.h"
 #define string char*
 
 List shapes;
