@@ -3,6 +3,8 @@
 #include "../headers/Shapes/Shape.h"
 #include "../headers/List.h"
 #include "../headers/Command.h"
+#include "../headers/Pixel.h"
+
 #define string char*
 
 List shapes;
@@ -129,7 +131,32 @@ void display_shapes() {
 	printf("\n");
 }
 
+
+void draw_temp(Pixel **area, int l) {
+	int plane[20][20] = {0};
+	Pixel *pix;
+	for (int i = 0; i < l; i++) {
+		pix = area[i];
+		plane[pix->y][pix->x] = 1;
+	}
+
+	for (int i = 0; i < 20; i++) {
+		for (int j = 0; j < 20; j++) {
+			printf("%c", plane[i][j] ? '#' : '.');
+		}
+		printf("\n");
+	}
+}
+
 int main() {
+
+	Pixel **pixel_tab;
+	int nb_pixels;
+	Shape* square = create_square_shape(3, 3, 3);
+	pixel_square(square, &pixel_tab, &nb_pixels);
+	draw_temp(pixel_tab, nb_pixels);
+
+	return 0;
 	int running = 1;
 	while (running) {
 		printf("Select an option:\n");
