@@ -157,7 +157,7 @@ void pixel_polygon(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 	Polygon *poly = (Polygon*) shape->ptrShape;
 
 	Pixel **temp_tab;
-	int temp_nb;
+	int temp_nb = 0;
 	Shape *line;
 	Point *p1, *p2;
 	for (int i = 0 ; i < poly->n - 1; i++) {
@@ -165,6 +165,9 @@ void pixel_polygon(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 		p2 = poly->points[i + 1];
 		line = create_line_shape(p1->x, p1->y, p2->x, p2->y);
 		pixel_line(line, &temp_tab, &temp_nb);
-
+		*pixel_tab = (Pixel**) realloc(*pixel_tab, (*nb_pixels + temp_nb) * sizeof(Pixel*));
+		for (int j = 0; j < temp_nb; j++) {
+			(*pixel_tab)[(*nb_pixels)++] = temp_tab[j];
+		}
 	}
 }

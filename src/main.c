@@ -152,8 +152,9 @@ int main() {
 
 	Pixel **pixel_tab;
 	int nb_pixels;
-	Shape* square = create_square_shape(3, 3, 3);
-	pixel_square(square, &pixel_tab, &nb_pixels);
+	int coords[8] = {1, 1, 1, 4, 5, 4, 0, 20};
+	Shape* polygon = create_polygon_shape(coords, 8);
+	pixel_polygon(polygon, &pixel_tab, &nb_pixels);
 	draw_temp(pixel_tab, nb_pixels);
 
 	return 0;
