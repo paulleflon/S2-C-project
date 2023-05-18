@@ -149,10 +149,15 @@ int read_exec_command(Command *cmd, Area *area) {
 		draw_area(area);
 		print_area(area);
 	}
+	else if (strcmp(cmd->name, "clear") == 0) {
+		#ifdef _WIN32
+			system("cls"); // Windows
+		#else
+			system("clear"); // macOS/Linux
+		#endif
+	}
 	else if (strcmp(cmd->name, "erase") == 0)
 		erase_area(area);
-	else if (strcmp(cmd->name, "clear") == 0)
-		printf("\033[2J");
 	else if (strcmp(cmd->name, "exit") == 0)
 		return 1;
 	else if (strcmp(cmd->name, "") != 0)

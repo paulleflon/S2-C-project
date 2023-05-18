@@ -46,10 +46,11 @@ void delete_area(Area *area) {
 }
 
 void draw_area(Area *area) {
-	int nb_pixels = 0;
+	int nb_pixels;
 	Pixel **pixel_tab;
 	Pixel *pix;
 	for (int i = 0; i < area->nb_shape; i++) {
+		nb_pixels = 0;
 		pixel_tab = create_shape_to_pixel(area->shapes[i], &nb_pixels);
 		for (int j = 0; j < nb_pixels; j++) {
 			pix = pixel_tab[j];
