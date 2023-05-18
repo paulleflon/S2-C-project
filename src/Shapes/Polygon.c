@@ -5,7 +5,7 @@
 Polygon* create_polygon(int coords[], int n) {
 	Polygon *poly = (Polygon*)malloc(sizeof(Polygon));
 	if (n % 2) {
-		printf("There should be an even number of coordinates. This polygon will be empty.");
+		printf("There should be an even number of coordinates. This polygon will be empty.\n");
 		poly->n = 0;
 		poly->points = NULL;
 	} else {
