@@ -158,6 +158,8 @@ int main() {
 		read_from_stdin(cmd);
 		if (read_exec_command(cmd, area))
 			running = 0;
+		cmd->int_size = 0;
+		cmd->str_size = 0;
 	}
 	return 0;
 	//int running = 1;

@@ -134,27 +134,29 @@ int read_exec_command(Command *cmd, Area *area) {
 		}
 	}
 	else if (strcmp(cmd->name, "polygon") == 0) {
-		if (cmd->int_size < 2)
-			printf("Expected at least 4 parameters: x1 y1 x2 y2");
+		if (cmd->int_size < 4)
+			printf("Expected at least 4 parameters: x1 y1 x2 y2\n");
 		else if (cmd->int_size%2 == 1)
-			printf("Expected an even number of parameters: x1 y1 x2 y2 ... xN yN");
+			printf("Expected an even number of parameters: x1 y1 x2 y2 ... xN yN\n");
 		else {
 			Shape *shape = create_polygon_shape(cmd->int_params, cmd->int_size);
 			add_shape_to_area(area, shape);
 			printf("Added new Polygon #%d\n", shape->id);
 		}
 	}
+	else if (strcmp(cmd->name, "plot") == 0) {
+		clear_area(area);
+		draw_area(area);
+		print_area(area);
+	}
 	else if (strcmp(cmd->name, "erase") == 0)
 		erase_area(area);
-	else if (strcmp(cmd->name, "plot") == 0)
-		draw_area(area);
 	else if (strcmp(cmd->name, "clear") == 0)
 		printf("\033[2J");
 	else if (strcmp(cmd->name, "exit") == 0)
 		return 1;
 	else if (strcmp(cmd->name, "") != 0)
 		printf("Unknown command: '%s' - Type help to see available commands.\n", cmd->name);
-
 	return 0;
 }
 
@@ -162,8 +164,15 @@ void read_from_stdin(Command *cmd) {
 	printf(">>>");
 	char *buffer = (char*)malloc(100 * sizeof(char));
 	fgets(buffer, 100, stdin);
+	char *ptr = strchr(buffer, '\n');
+	if (ptr != NULL)
+		*ptr = '\0';
+	if (buffer[0] == '\0') {
+		strcpy(cmd->name, "");
+		return;
+	}
 	// Getting command name
-	char *token = strtok(buffer, " \n");
+	char *token = strtok(buffer, " ");
 	strcpy(cmd->name, token);
 	// We first parse string parameters, then int parameters. They're not mixed.
 	int parsing_str = 1;

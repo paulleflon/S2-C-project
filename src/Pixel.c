@@ -160,6 +160,7 @@ void pixel_polygon(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 	int temp_nb = 0;
 	Shape *line;
 	Point *p1, *p2;
+	*pixel_tab = NULL;
 	for (int i = 0 ; i < poly->n - 1; i++) {
 		p1 = poly->points[i];
 		p2 = poly->points[i + 1];

@@ -9,6 +9,8 @@ Area* create_area(unsigned int width, unsigned int height) {
 	for (int i = 0; i < height; i++) {
 		a->mat[i] = (BOOL*) malloc(width * sizeof(BOOL));
 	}
+	a->width = width;
+	a->height = height;
 	return a;
 }
 
@@ -30,6 +32,7 @@ void erase_area(Area *area) {
 	for (int i = 0; i < area->nb_shape; i++) {
 		delete_shape(area->shapes[i]);
 	}
+	area->nb_shape = 0;
 }
 
 void delete_area(Area *area) {
@@ -43,11 +46,11 @@ void delete_area(Area *area) {
 }
 
 void draw_area(Area *area) {
-	int nb_pixels;
+	int nb_pixels = 0;
 	Pixel **pixel_tab;
 	Pixel *pix;
 	for (int i = 0; i < area->nb_shape; i++) {
-		pixel_tab = create_shape_to_pixel(area->shapes[area->nb_shape], &nb_pixels);
+		pixel_tab = create_shape_to_pixel(area->shapes[i], &nb_pixels);
 		for (int j = 0; j < nb_pixels; j++) {
 			pix = pixel_tab[j];
 			if (pix->x < area->width && pix->y < area->height)
