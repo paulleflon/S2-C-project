@@ -4,6 +4,7 @@
 #include "../headers/List.h"
 #include "../headers/Command.h"
 #include "../headers/Pixel.h"
+#include "../headers/Area.h"
 
 #define string char*
 
@@ -149,16 +150,17 @@ void draw_temp(Pixel **area, int l) {
 }
 
 int main() {
-
-	Pixel **pixel_tab;
-	int nb_pixels;
-	int coords[8] = {1, 1, 1, 4, 5, 4, 0, 20};
-	Shape* polygon = create_polygon_shape(coords, 8);
-	pixel_polygon(polygon, &pixel_tab, &nb_pixels);
-	draw_temp(pixel_tab, nb_pixels);
-
-	return 0;
+	printf("Welcome to VectorEditor - Written by Adèle Chamoux & Paul Leflon, INT-1\n");
 	int running = 1;
+	Command *cmd = create_command();
+	Area *area = create_area(40, 20);
+	while (running) {
+		read_from_stdin(cmd);
+		if (read_exec_command(cmd, area))
+			running = 0;
+	}
+	return 0;
+	//int running = 1;
 	while (running) {
 		printf("Select an option:\n");
 		string options[] = {"Add a shape", "Display the list of shapes", "Delete a shape", "Draw shapes", "Help", "Exit"};
