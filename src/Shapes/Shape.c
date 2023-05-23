@@ -53,7 +53,7 @@ Shape* create_circle_shape(int x, int y, int radius) {
 Shape* create_polygon_shape(int coords[], int n) {
 	Shape *shape = create_empty_shape(polygon);
 	Polygon *poly = create_polygon(coords, n);
-	shape->ptrShape = poly;
+	shape->ptrShape = (Polygon*) poly;
 	return shape;
 }
 
@@ -78,6 +78,7 @@ void delete_shape(Shape *shape) {
 			delete_polygon(shape->ptrShape);
 			break;
 	}
+	free(shape);
 }
 
 void print_shape(Shape *shape) {
