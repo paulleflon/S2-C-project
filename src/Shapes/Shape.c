@@ -1,3 +1,9 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file regroups the functions of the creation of every shape
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../headers/Shapes/Shape.h"

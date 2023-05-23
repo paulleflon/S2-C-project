@@ -1,8 +1,14 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This is the header file of the source file Command.c
+ */
+
 #ifndef COMMAND_H
 #define COMMAND_H
 
 #include "Area.h"
 
+//creation of the Command structure
 typedef struct Command {
 	char name[50];
 	int int_size;
@@ -11,6 +17,7 @@ typedef struct Command {
 	char *str_params[10];
 } Command;
 
+//functions defined in the source
 Command *create_command();
 void add_str_param(Command *cmd, char *p);
 void add_int_param(Command *cmd, int p);

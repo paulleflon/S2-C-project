@@ -1,3 +1,8 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file contains all the functions that look after the pixels command
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "../headers/Pixel.h"

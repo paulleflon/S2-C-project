@@ -1,3 +1,9 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This is the main file.
+ * It looks after the user display interface while calling all the functions implemented in the other files
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../headers/Shapes/Shape.h"
@@ -150,7 +156,7 @@ void draw_temp(Pixel **area, int l) {
 }
 
 int main() {
-	printf("Welcome to VectorEditor - Written by Adèle Chamoux & Paul Leflon, INT-1\n");
+	printf("Welcome to VectorEditor - Written by Adele Chamoux & Paul Leflon, INT-1\n");
 	int running = 1;
 	Command *cmd = create_command();
 	Area *area = create_area(40, 20);

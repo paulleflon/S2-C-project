@@ -1,7 +1,14 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file regroups the functions for the shape "polygon"
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../headers/Shapes/Polygon.h"
 
+//allows to dynamically allocate a structured polygon whose coordinates are given in parameter
 Polygon* create_polygon(int coords[], int n) {
 	Polygon *poly = (Polygon*)malloc(sizeof(Polygon));
 	if (n % 2) {
@@ -20,6 +27,7 @@ Polygon* create_polygon(int coords[], int n) {
 	return poly;
 }
 
+//allows to free the memory allocated to the polygon given in parameter
 void delete_polygon(Polygon *polygon) {
 	int n = polygon->n;
 	for (int i = 0; i < n;i++) {
@@ -28,6 +36,7 @@ void delete_polygon(Polygon *polygon) {
 	free(polygon);
 }
 
+//allows to display on the screen the information of a polygon
 void print_polygon(Polygon *polygon) {
 	printf("POLYGON ");
 	int n = polygon->n;

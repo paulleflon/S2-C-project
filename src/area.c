@@ -1,3 +1,9 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file contains the necessary to display the drawing on the screen with "#" and "."
+ */
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "../headers/Area.h"

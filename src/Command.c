@@ -1,3 +1,8 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file contains all the functions liked to the displayal of the -help menu
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -51,9 +56,9 @@ int read_exec_command(Command *cmd, Area *area) {
 		printf("plot - plots all the shapes on the screen\n");
 		printf("point <x> <y> - add a point\n");
 		// Open polygon is a deliberate feature
-		printf("polygon <x1> <y1> <x2> <y2> < ... > - add a polygon with the list of given points (can be an open polyhon)\n");
+		printf("polygon <x1> <y1> <x2> <y2> < ... > - add a polygon with the list of given points (can be an open polygon)\n");
 		printf("rectangle <x> <y> <width> <height> - add a rectangle whose upper left corner is (x,y)\n");
-		printf("square <x>y <y> <length> - add a square whose upper left corner is (x,y)\n");
+		printf("square <x> <y> <length> - add a square whose upper left corner is (x,y)\n");
 		printf("\n");
 	}
 	else if (strcmp(cmd->name, "list") == 0) {

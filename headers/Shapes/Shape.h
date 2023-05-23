@@ -1,3 +1,8 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This is the header file of the source file Shape.c
+ */
+
 #ifndef SHAPE_H
 #define SHAPE_H
 #include "Point.h"
@@ -9,12 +14,14 @@
 
 typedef enum SHAPE_TYPE { point, line, square, circle, rectangle, polygon } SHAPE_TYPE;
 
+//creation of the Shape structure
 typedef struct Shape {
 	int id;
 	SHAPE_TYPE type;
 	void *ptrShape;
 } Shape;
 
+//functions defined in the source
 Shape* create_empty_shape(SHAPE_TYPE type);
 Shape* create_point_shape(int x, int y);
 Shape* create_line_shape(int x1, int y1, int x2, int y2);

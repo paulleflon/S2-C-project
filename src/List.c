@@ -1,3 +1,9 @@
+/*             Pixel tracer by Adèle Chamoux & Paul Leflon
+ * ----------------------------------------------------------------------
+ * This source file looks after the SLL structure used for this project
+ */
+
+
 #include <stdlib.h>
 #include "../headers/List.h"
 
