@@ -1,69 +1,71 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include "../headers/area.h"
+#include <stdio.h>
+#include "../headers/Area.h"
+#include "../headers/Pixel.h"
 
 Area* create_area(unsigned int width, unsigned int height) {
-    Area* area = (Area*)malloc(sizeof(Area));  // Allocate memory for the Area structure
-
-    area->width = width;
-    area->height = height;
-    area->nb_shape = 0;
-
-    // Allocate memory for the pixel matrix
-    area->mat = (BOOL**)malloc(width * sizeof(BOOL*));
-    for (unsigned int i = 0; i < width; i++) {
-        area->mat[i] = (BOOL*)malloc(height * sizeof(BOOL));
-    }
-
-    // Initialize all pixels in the matrix to a default value (e.g., FALSE)
-    for (unsigned int i = 0; i < width; i++) {
-        for (unsigned int j = 0; j < height; j++) {
-            area->mat[i][j] = 0;
-        }
-    }
-
-    return area;
+	Area* a = (Area*)malloc(sizeof(Area));
+	a->mat = (BOOL**) malloc(height * sizeof(BOOL*));
+	for (int i = 0; i < height; i++) {
+		a->mat[i] = (BOOL*) malloc(width * sizeof(BOOL));
+	}
+    a->nb_shape = 0;
+	a->width = width;
+	a->height = height;
+	return a;
 }
 
-void add_shape_to_area(Area* area, Shape* shape) {
-    if (area->nb_shape < SHAPE_MAX) {
-        area->shapes[area->nb_shape] = shape;
-        area->nb_shape++;
-    } else {
-        // Handle error: Maximum number of shapes reached
-    }
+void add_shape_to_area(Area *area, Shape* shape) {
+	if (area->nb_shape == SHAPE_MAX)
+		return;
+	area->shapes[area->nb_shape++] = shape;
 }
 
-
-void clear_area(Area* area) {
-    // Reset all pixels in the matrix to a default value (e.g., FALSE)
-    for (unsigned int i = 0; i < area->width; i++) {
-        for (unsigned int j = 0; j < area->height; j++) {
-            area->mat[i][j] = 0;
-        }
-    }
+void clear_area(Area *area) {
+	for (int i = 0; i < area->height; i++) {
+		for (int j = 0; j < area->width; j++) {
+			area->mat[i][j] = 0;
+		}
+	}
 }
 
-
-void erase_area(Area* area) {
-    for (int i = 0; i < area->nb_shape; i++) {
-        free(area->shapes[i]);  // Free the memory allocated for each shape
-    }
-    area->nb_shape = 0;  // Reset the number of shapes to 0
+void erase_area(Area *area) {
+	for (int i = 0; i < area->nb_shape; i++) {
+		delete_shape(area->shapes[i]);
+	}
+	area->nb_shape = 0;
 }
 
-
-void delete_area(Area* area) {
-    erase_area(area);  // Delete all associated shapes
-
-    for (unsigned int i = 0; i < area->width; i++) {
-        free(area->mat[i]);  // Free the memory allocated for each row of the pixel matrix
-    }
-
-    free(area->mat);  // Free the memory allocated for the pixel matrix
-    free(area);       // Free the memory allocated for the Area structure
+void delete_area(Area *area) {
+	erase_area(area);
+	free(area->shapes);
+	for (int i = 0; i < area->height; i++) {
+		free(area->mat[i]);
+	}
+	free(area->mat);
+	free(area);
 }
 
+void draw_area(Area *area) {
+	int nb_pixels;
+	Pixel **pixel_tab;
+	Pixel *pix;
+	for (int i = 0; i < area->nb_shape; i++) {
+		nb_pixels = 0;
+		pixel_tab = create_shape_to_pixel(area->shapes[i], &nb_pixels);
+		for (int j = 0; j < nb_pixels; j++) {
+			pix = pixel_tab[j];
+			if (pix->x < area->width && pix->y < area->height)
+				area->mat[pix->y][pix->x] = 1;
+		}
+	}
+}
 
-// void draw_area(Area* area);
-// void print_area(Area* area);
+void print_area(Area *area) {
+	for (int i = 0; i < area->height; i++) {
+		for (int j = 0; j < area->width; j++) {
+			printf("%c", area->mat[i][j] ? '#' : '.');
+		}
+		printf("\n");
+	}
+}
