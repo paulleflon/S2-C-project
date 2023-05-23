@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Command.c
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Command related structures and function declarations
 
 #ifndef COMMAND_H
 #define COMMAND_H

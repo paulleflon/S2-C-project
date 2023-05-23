@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This source file regroups the functions for the shape "polygon"
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This source file contains Polygon related function implementations
 
 
 #include <stdio.h>

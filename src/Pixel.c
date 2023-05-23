@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This source file contains all the functions that look after the pixels command
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This source file contains Pixel related function implementations
 
 #include <stdlib.h>
 #include <stdio.h>

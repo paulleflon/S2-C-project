@@ -1,8 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Pixel.c
- */
-
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Pixel related structures and function declarations
 #ifndef PIXEL_H
 #define PIXEL_H
 

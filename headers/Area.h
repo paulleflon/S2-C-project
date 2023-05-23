@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Area.c
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Area related structures and function declarations
 
 #ifndef AREA_H
 #define AREA_H

@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Shape.c
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Shape related structures and function declarations
 
 #ifndef SHAPE_H
 #define SHAPE_H

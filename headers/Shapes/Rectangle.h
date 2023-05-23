@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Rectangle.c
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Rectangle related structures and function declarations
 
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
@@ -9,6 +10,9 @@
 
 /** Represents a simple Rectangle */
 typedef struct Rectangle {
+	/**
+	 * The top-left vertex of the Rectangle
+	 */
 	Point *origin;
 	int width;	
     int height;

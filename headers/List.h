@@ -1,8 +1,9 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file List.c
- * This was used in the first part of the project and is now deprecated.
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This file header contains Single Linked List related structures and function declarations
+/// It was only used in the first part of the project.
 
 #ifndef NODE_H
 #define NODE_H
@@ -15,7 +16,9 @@ typedef struct Node {
 	Shape *value;
 	struct Node *next;
 } Node;
-
+/**
+ * Type representing a pointer to the head of a Single Linked List
+ */
 typedef Node* List;
 
 /**

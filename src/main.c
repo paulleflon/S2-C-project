@@ -1,8 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the main file.
- * It looks after the user display interface while calling all the functions implemented in the other files
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This source file is the entry point of the program.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,9 +16,13 @@
 
 List shapes;
 
-//region Deprecated functions used in Part 1.
+///region Deprecated functions only used in Part 1.
+
 /**
  * Displays a menu and handles related user input
+ * @param options The options this menu should display
+ * @param options_size The number of options passed
+ * @returns The index of the option selected by the user
  */
 int menu(string options[], int options_size) {
 	for (int i = 0; i < options_size; i++) {
@@ -34,8 +38,10 @@ int menu(string options[], int options_size) {
 	return choice >= 97 ? choice - 97 : choice - 65;
 }
 
-// Displays instructions to input data of every shape and handles user input
-
+/**
+ * Displays instructions to input Point data and handles user input
+ * @return A pointer to the generate Point Shape
+ */
 Shape* input_point() {
 	printf("Enter the informations of the point:\n");
 	printf("Enter the coordinates x y: ");
@@ -43,7 +49,10 @@ Shape* input_point() {
 	scanf("%d %d", &x, &y);
 	return create_point_shape(x, y);
 }
-
+/**
+ * Displays instructions to input Line data and handles user input
+ * @return A pointer to the generate Line Shape
+ */
 Shape* input_line() {
 	int x1, y1, x2, y2;
 	printf("Enter the informations of the line:\n");
@@ -53,7 +62,10 @@ Shape* input_line() {
 	scanf("%d %d", &x2, &y2);
 	return create_line_shape(x1, y1, x2 ,y2);
 }
-
+/**
+ * Displays instructions to input Circle data and handles user input
+ * @return A pointer to the generate Circle Shape
+ */
 Shape* input_circle() {
 	int x, y, r;
 	printf("Enter the informations of the circle:\n");
@@ -63,7 +75,10 @@ Shape* input_circle() {
 	scanf("%d", &r);
 	return create_circle_shape(x, y, r);
 }
-
+/**
+ * Displays instructions to input Square data and handles user input
+ * @return A pointer to the generate Square Shape
+ */
 Shape* input_square() {
 	int x, y, l;
 	printf("Enter the informations of the square:\n");
@@ -74,7 +89,10 @@ Shape* input_square() {
 	return create_square_shape(x, y, l);
 
 }
-
+/**
+ * Displays instructions to input Rectangle data and handles user input
+ * @return A pointer to the generate Rectangle Shape
+ */
 Shape* input_rectangle() {
 	int x, y, w, h;
 	printf("Enter the informations of the rectangle:\n");
@@ -84,7 +102,10 @@ Shape* input_rectangle() {
 	scanf("%d %d", &w, &h);
 	return create_rectangle_shape(x, y, w, h);
 }
-
+/**
+ * Displays instructions to input Polygon data and handles user input
+ * @return A pointer to the generate Polygon Shape
+ */
 Shape* input_polygon() {
 	int n;
 	int *coords;
@@ -93,7 +114,7 @@ Shape* input_polygon() {
 		printf("Enter the number of vertices (min. 3): ");
 		scanf("%d", &n);
 	} while (n < 3);
-	n*=2;
+	n*=2; // There are n vertices, hence 2xn coordinates
 	coords = (int*)malloc(n * sizeof(int));
 	int index = 0;
 	for (int i = 0; i < n; i+=2) {
@@ -104,7 +125,10 @@ Shape* input_polygon() {
 }
 
 /**
- * Executes the whole display-input process to add a shape
+ * Handles a whole shape adding process:
+ *  - Makes the user select a shape
+ *  - Makes the user input the required data for the given shape
+ *  - Appends the shape to the global shape list
  */
 void add_shape() {
 	printf("Select a shape:\n");

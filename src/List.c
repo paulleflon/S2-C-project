@@ -1,8 +1,9 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This source file implements the SLL structure used for the first part this project
- */
-
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This source file contains Single Linked List related function implementations
+/// It was only used in the first part of the project.
 
 #include <stdlib.h>
 #include "../headers/List.h"

@@ -1,7 +1,9 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This source file contains the function needed to give an id to every new shape
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This source file contains shape id related function implementations
+/// It is also the file where the global id variable is defined
 
 #include "../headers/id.h"
 

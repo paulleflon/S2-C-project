@@ -1,7 +1,8 @@
-/*             Pixel tracer by Adèle Chamoux & Paul Leflon
- * ----------------------------------------------------------------------
- * This is the header file of the source file Square.c
- */
+///========================================================================
+///                              VectorEditor
+///                     By Adèle Chamoux & Paul Leflon
+///========================================================================
+/// This header file contains Square related structures and function declarations
 
 #ifndef SQUARE_H
 #define SQUARE_H
@@ -10,6 +11,9 @@
 /** Represents a simple Square */
 // We could have used a Rectangle instead of reimplementing a whole structure.
 typedef struct Square {
+	/**
+	 * The top-left vertex of the Square
+	 */
     Point *origin;
     int length;
 } Square;
