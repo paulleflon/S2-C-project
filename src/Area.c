@@ -58,6 +58,9 @@ void delete_area(Area *area) {
 }
 
 void draw_area(Area *area) {
+	// There is nothing to do here if the area contains no shape.
+	if (area->nb_shape == 0)
+		return;
 	int nb_pixels;
 	Pixel **pixel_tab;
 	Pixel *pix;

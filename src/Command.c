@@ -62,6 +62,8 @@ int read_exec_command(Command *cmd, Area *area) {
 		for (int i = 0; i < area->nb_shape; i++) {
 			print_shape(area->shapes[i]);
 		}
+		if (area->nb_shape == 0)
+			printf("The area is empty.\n");
 	}
 	else if (strcmp(cmd->name, "delete") == 0) { // Deletes a shape
 		if (cmd->int_size < 1)
