@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "../headers/Pixel.h"
+
 Pixel* create_pixel(int x, int y) {
 	Pixel* p = (Pixel*) malloc(sizeof(Pixel));
 	p->x = x;
@@ -20,11 +21,14 @@ void delete_pixel(Pixel* pixel) {
 void pixel_point(Shape* shape, Pixel*** pixel_tab, int* nb_pixels) {
 	Point* pt = (Point*) shape->ptrShape;
 	*pixel_tab = (Pixel**) malloc(sizeof (Pixel*));
+	// A Point is always just a single Pixel but for uniformity between our pixel functions,
+	// we return it as an array as well.
 	*pixel_tab[0] = create_pixel(pt->x, pt->y);
 	*nb_pixels = 1;
 }
 
 void pixel_line(Shape* shape, Pixel*** pixel_tab, int* nb_pixels) {
+	// This function uses Nicolas Flasque's algorithm.
 	Line* l = (Line*) shape->ptrShape;
 	Point* a = (l->p1->x > l->p2->x) ? l->p2 : l->p1;
 	Point* b = (l->p1->x > l->p2->x) ? l->p1 : l->p2;
@@ -92,6 +96,7 @@ void pixel_line(Shape* shape, Pixel*** pixel_tab, int* nb_pixels) {
 }
 
 void pixel_circle(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
+	// This function uses the algorithm described in the instructions
 	Circle *circle = (Circle*) shape->ptrShape;
 	int radius = circle->radius,
 		px = circle->center->x,
@@ -135,6 +140,7 @@ void pixel_rectangle(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 	*pixel_tab = (Pixel**) malloc(2 * (w + h) * sizeof(Pixel*));
 	*nb_pixels = 0;
 	int tx = x, ty = y;
+	// To draw a rectangle, we just add pixels on 4 straight lines
 	while (tx < x + w - 1) { // Top
 		(*pixel_tab)[(*nb_pixels)++] = create_pixel(tx++, ty);
 	}
@@ -153,6 +159,8 @@ void pixel_rectangle(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 }
 
 void pixel_square(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
+	// A square is just a rectangle with width = height.
+	// Thanks to this, we can just reuse pixel_rectangle
 	Square *s = (Square*) shape->ptrShape;
 	Shape *rectangle = create_rectangle_shape(s->origin->x, s->origin->y, s->length, s->length);
 	pixel_rectangle(rectangle, pixel_tab, nb_pixels);
@@ -160,17 +168,18 @@ void pixel_square(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 
 void pixel_polygon(Shape *shape, Pixel ***pixel_tab, int *nb_pixels) {
 	Polygon *poly = (Polygon*) shape->ptrShape;
-
 	Pixel **temp_tab;
 	int temp_nb = 0;
 	Shape *line;
 	Point *p1, *p2;
 	*pixel_tab = NULL;
+	// A polygon is just a collection of Lines. Hence, we can reuse pixel_line.
 	for (int i = 0 ; i < poly->n - 1; i++) {
 		p1 = poly->points[i];
 		p2 = poly->points[i + 1];
 		line = create_line_shape(p1->x, p1->y, p2->x, p2->y);
 		pixel_line(line, &temp_tab, &temp_nb);
+		// For each line of the polygon, we append its pixels to the final pixel_tab
 		*pixel_tab = (Pixel**) realloc(*pixel_tab, (*nb_pixels + temp_nb) * sizeof(Pixel*));
 		for (int j = 0; j < temp_nb; j++) {
 			(*pixel_tab)[(*nb_pixels)++] = temp_tab[j];
@@ -205,7 +214,7 @@ Pixel** create_shape_to_pixel(Shape *shape, int *nb_pixels) {
 
 void delete_pixel_shape(Pixel ***pixel_tab, int nb_pixels) {
 	for (int i = 0; i < nb_pixels; i++) {
-		free((*pixel_tab)[i]);
+		delete_pixel((*pixel_tab)[i]);
 	}
-	free(pixel_tab);
+	free(*pixel_tab);
 }

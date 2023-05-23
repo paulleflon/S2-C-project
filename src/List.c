@@ -1,6 +1,6 @@
 /*             Pixel tracer by Adèle Chamoux & Paul Leflon
  * ----------------------------------------------------------------------
- * This source file looks after the SLL structure used for this project
+ * This source file implements the SLL structure used for the first part this project
  */
 
 
@@ -12,16 +12,6 @@ Node* create_node(Shape *shape) {
 	node->value = shape;
 	node->next = NULL;
 	return node;
-}
-
-int list_length(List lst) {
-	int n = 0;
-	Node *current = lst;
-	while (current != NULL) {
-		current = current->next;
-		n++;
-	}
-	return n;
 }
 
 void append_shape(List *lst, Shape *shape) {

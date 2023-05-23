@@ -16,6 +16,10 @@
 
 List shapes;
 
+//region Deprecated functions used in Part 1.
+/**
+ * Displays a menu and handles related user input
+ */
 int menu(string options[], int options_size) {
 	for (int i = 0; i < options_size; i++) {
 		printf("%c - %s\n", 65 + i, options[i]);
@@ -29,6 +33,8 @@ int menu(string options[], int options_size) {
 );
 	return choice >= 97 ? choice - 97 : choice - 65;
 }
+
+// Displays instructions to input data of every shape and handles user input
 
 Shape* input_point() {
 	printf("Enter the informations of the point:\n");
@@ -97,6 +103,9 @@ Shape* input_polygon() {
 	return create_polygon_shape(coords, n);
 }
 
+/**
+ * Executes the whole display-input process to add a shape
+ */
 void add_shape() {
 	printf("Select a shape:\n");
 	string options[] = {"Point", "Line", "Circle", "Square", "Rectangle", "Polygon", "Back"};
@@ -129,6 +138,9 @@ void add_shape() {
 	printf("\n");
 }
 
+/**
+ * Displays the list of shapes
+ */
 void display_shapes() {
 	Node *current = shapes;
 	while (current != NULL) {
@@ -137,56 +149,23 @@ void display_shapes() {
 	}
 	printf("\n");
 }
-
-
-void draw_temp(Pixel **area, int l) {
-	int plane[20][20] = {0};
-	Pixel *pix;
-	for (int i = 0; i < l; i++) {
-		pix = area[i];
-		plane[pix->y][pix->x] = 1;
-	}
-
-	for (int i = 0; i < 20; i++) {
-		for (int j = 0; j < 20; j++) {
-			printf("%c", plane[i][j] ? '#' : '.');
-		}
-		printf("\n");
-	}
-}
+//endregion
 
 int main() {
 	printf("Welcome to VectorEditor - Written by Adele Chamoux & Paul Leflon, INT-1\n");
 	int running = 1;
-	Command *cmd = create_command();
+	Command *cmd = create_command(); // Holds the user's last inputted command
 	Area *area = create_area(40, 20);
 	while (running) {
 		read_from_stdin(cmd);
-		if (read_exec_command(cmd, area))
+		if (read_exec_command(cmd, area)) // read_exec_command returns 1 if the exit command was inputted
 			running = 0;
+		 // We reset the command's parameters sizes
+		 // So that previous parameters are not taken into account.
 		cmd->int_size = 0;
 		cmd->str_size = 0;
 	}
-	return 0;
-	//int running = 1;
-	while (running) {
-		printf("Select an option:\n");
-		string options[] = {"Add a shape", "Display the list of shapes", "Delete a shape", "Draw shapes", "Help", "Exit"};
-		int choice = menu(options, 6);
-		switch (choice) {
-			case 0:
-				add_shape();
-				break;
-			case 1:
-				display_shapes();
-				break;
-			case 5:
-				running = 0;
-				break;
-			default:
-				printf("This feature is not implemented yet.\n");
-				break;
-		}
-	}
+	free_cmd(cmd);
+	delete_area(area);
 	return 0;
 }

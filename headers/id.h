@@ -6,7 +6,11 @@
 #ifndef ID_H
 #define ID_H
 
-//functions defined in the source
+/** Returns a unique id for a shape */
+/**
+ * Gets a new unique id for a shape
+ * @returns The new unique id
+ */
 unsigned int get_next_id();
 
 #endif

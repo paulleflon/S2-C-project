@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "../../headers/Shapes/Polygon.h"
 
-//allows to dynamically allocate a structured polygon whose coordinates are given in parameter
 Polygon* create_polygon(int coords[], int n) {
 	Polygon *poly = (Polygon*)malloc(sizeof(Polygon));
 	if (n % 2) {
@@ -20,14 +19,13 @@ Polygon* create_polygon(int coords[], int n) {
 		// However, as an attribute of poly, it's the number of vertices, so half the number of coordinates.
 		poly->n = n / 2;
 		poly->points = (Point**)malloc(n / 2 * sizeof(Point*));
-		int index = 0;
+		int index = 0; // index is the index of a vertice, while i is the index of a coordinate.
 		for (int i = 0; i < n; i+=2)
 			poly->points[index++] = create_point(coords[i], coords[i + 1]);
 	}
 	return poly;
 }
 
-//allows to free the memory allocated to the polygon given in parameter
 void delete_polygon(Polygon *polygon) {
 	int n = polygon->n;
 	for (int i = 0; i < n;i++) {
@@ -36,7 +34,6 @@ void delete_polygon(Polygon *polygon) {
 	free(polygon);
 }
 
-//allows to display on the screen the information of a polygon
 void print_polygon(Polygon *polygon) {
 	printf("POLYGON ");
 	int n = polygon->n;
